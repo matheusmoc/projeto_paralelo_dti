@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Registro, RegistroAssunto, SistemaAcesso, User};
+use App\Models\{Registro, RegistroAssunto, User};
 use Illuminate\Support\Arr;
 
 class RegistroController extends Controller
@@ -35,6 +35,8 @@ class RegistroController extends Controller
     {
         $registro_assuntos = RegistroAssunto::all();
 
+
+
         return view('admin.registros.create', ['registro_assuntos' => $registro_assuntos]);
     }
 
@@ -52,6 +54,8 @@ class RegistroController extends Controller
         
         $dados = Arr::add($request->all(), 'ip', $request->ip());
         Registro::create($dados);
+         
+
 
         // $registros = new Registro();
 
@@ -79,11 +83,15 @@ class RegistroController extends Controller
      */
     public function show(Request $request, $id)
     {
-        $registros = Registro::find($id);
+        $registros = Registro::findOrFail($id);
         if (!$registros) {
             return redirect()->back();
         }
-        //registro
+
+        //dd($usuario);
+        
+
+        //dd($registros);
 
         $ip =  $request->ip();
         //IP
@@ -94,7 +102,11 @@ class RegistroController extends Controller
         //$sistema = $request->server->get('HTTP_USER_AGENT');
 
         //SO
-        
+        //$usuario = User::find($id); --> não funciona
+
+        $usuario =  Registro::with(['user'])->find($id);
+        //dd($usuario);
+
         return view(
             'admin.registros.show',
             [ 
@@ -102,6 +114,7 @@ class RegistroController extends Controller
                 'ip' => $ip,
                 'sistema_op' => $sistema,
                 //variável      //valor
+                'usuario' => $usuario
             ]
         );
     }

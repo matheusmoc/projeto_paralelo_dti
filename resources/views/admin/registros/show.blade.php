@@ -77,7 +77,7 @@
                                 </div>
                                 <!-- /.user-block -->
                                 <p>
-                                    {{ $registros->descricao }}
+                                    {{$registros->descricao}}
                                 </p>
                             </div>
                         </div>
@@ -85,12 +85,11 @@
                 </div>
                 <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
                     <h3 class="text-primary"><i class="fas fa-user"></i>Autor</h3>
-                    <p class="text-muted"></p>
+                    <p class="text-muted">Criado por:</p>
                     <div class="text-muted">
-                        <p class="text-sm">Chamado aberto por:
-                            <b class="d-block">{{$registros->usuario}}</b>
+                            <b class="d-block">{{$usuario->user->name}}</b>
                             <?php
-                             //dd($registros);
+                             //dd($usuario);
                             ?>
                         </p>
                     </div>
@@ -108,7 +107,7 @@
                                 {{$ip}}
                             </a>
                         </li>
-                        <h5 class="mt-5 text-muted">SO e Browser:</h5>
+                        <h5 class="mt-5 text-muted">SO:</h5>
                         <ul class="list-unstyled">
                         <li>
                             <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-user"></i>

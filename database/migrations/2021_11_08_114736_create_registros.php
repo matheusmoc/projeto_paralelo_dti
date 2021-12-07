@@ -23,10 +23,11 @@ class CreateRegistros extends Migration
             $table->text('descricao', 1500)->default();
             $table->integer('registro_assunto');
             $table->ipAddress('ip');
-            $table->string('users'); //usuario logado
             $table->timestamps();
+
         });
     }
+
 
     /**
      * Reverse the migrations.
