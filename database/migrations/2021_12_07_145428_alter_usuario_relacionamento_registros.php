@@ -18,7 +18,7 @@ class AlterUsuarioRelacionamentoRegistros extends Migration
             //insere um registro de users para relacionamento
             $user_id =  DB::table('users')->insertGetId([
                 'name' => 'Matheus',
-                'email' => 'maheusandrade009@gmail.com',
+                'email' => 'matheusandrade009@gmail.com',
                 'password' =>'teste'
             ]);
 

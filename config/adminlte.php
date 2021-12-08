@@ -255,15 +255,21 @@ return [
         // ],
         ['header' => 'TICKETS'],
         [
+            'text' => 'Mostra tickets',
+            'url'  => 'admin/registros',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
             'text' => 'Enviar ticket',
             'url'  => 'admin/registros/create',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'Mostra tickets',
-            'url'  => 'admin/registros',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Usuários cadastrados',
+            'url'  => 'admin/usuarios/',
+            'icon' => 'fas fa-fw fa-user',
         ],
+
         // [
         //     'text'    => 'multilevel',
         //     'icon'    => 'fas fa-fw fa-share',
