@@ -21,31 +21,26 @@
 
 @section('content')
 
-@foreach($pessoas as $pessoa)
-<div class="container mt-5">
-        <div class="row">
-            <div class="col-3 mb-3">
-                <div class="card">
-                    <img src="#" class="card-img-top">
-                    <div class="card-body">
-                            <h2 class="card-title">{{$pessoa->name}}</h2><br>
-                            <p><small class="text-muted"></small></p>
-                            <p class='card-text'>status</p>
-                            <hr>
-                            <button data-bs-target="#collapseInfo" data-bs-toggle='collapse'
-                                class="btn btn-sm btn-secondary">Dados do usuário</button>
-                            <div class="collapse" id="collapseInfo">
-                                <div class='card card-body'>
-                                    <p>description here</p>
-                                </div>
-                            </div>
-                            <hr>
-                        <a href="#" class="btn btn-sm btn-danger">Desativar usuário</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endforeach
+@foreach($usuarios as $usuario)
+<section class="content">
+
+    <div class="card" style="width: 18rem;">
+     <img src="#" class="card-img-top" alt="...">
+     <div class="card-body">
+    <h5 class="card-title">{{$usuario->name}}</h5>
+    <p class="card-text"></p>
+    <form action="{{ route('usuarios.destroy', ['usuario' => $usuario->id]) }}" method="post">
+        @csrf
+        @method('DELETE')
+         <button type="submit" class="btn btn-sm bg-danger mb-2">
+            <i class="fas fa-trash"></i> Desativar
+         </button>
+    </form>
+    <a class="btn btn-sm bg-primary mb-2" href="{{route('usuarios.show', ['usuario'=>$usuario->id])}}">Perfil</a>
+  </div>
+</div>
+</section>
+
+@endforeach  
 
 @stop

@@ -22,16 +22,16 @@
 
 @section('content')
 
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Detalhes do Ticket</h3>
+    <div class="card card-solid">
+        <div class="card-header bg-primary">
+            <h3 class="card-title"><strong>Detalhes do Ticket</strong></h3>
 
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
                     title="Collapse">
                     <i class="fas fa-minus"></i></button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                    <i class="fas fa-times"></i></button>
+                <!-- <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                    <i class="fas fa-times"></i></button> -->
             </div>
         </div>
         <div class="card-body">
@@ -71,9 +71,15 @@
                             <div class="post">
                                 <div class="user-block">
                                     <span class="username">
-                                        <a href="#">{{ $registros->nome }}</a>
+                                        <a href="#">{{$registros->nome}}</a>
                                     </span>
                                     <span class="description">{{$registros->updated_at}}</span>
+                                </div>
+                                <div class="card">
+                                       <div class="card-body">
+                                        <strong>Email do solicitante: <br><hr></strong>
+                                         {{$registros->email}}
+                                       </div>
                                 </div>
                                 <!-- /.user-block -->
                                 <p>
@@ -84,10 +90,10 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-                    <h3 class="text-primary"><i class="fas fa-user"></i>Autor</h3>
-                    <p class="text-muted">Criado por:</p>
+                    <h3 class="text"><i class="fas fa-user"></i> Usuário autor</h3>
+                    <p class="text-muted">Ticket criado por:</p>
                     <div class="text-muted">
-                            <b class="d-block">{{$usuario->user->name}}</b>
+                            <b class="d-block">{{$usuarios->user->name}}</b>
                             <?php
                              //dd($usuario);
                             ?>
@@ -98,7 +104,7 @@
                     <ul class="list-unstyled">
                         <li>
                             <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i>
-                             {{$registros->email}}</a>
+                             {{$usuarios->user->email}}</a>
                         </li>
                         <h5 class="mt-5 text-muted">IP:</h5>
                         <ul class="list-unstyled">

@@ -16,7 +16,7 @@ class AlterRegistrosAddFkRegistroAssuntos extends Migration
     {
          //adicionando a coluna motivo_contatos_id
          Schema::table('registros', function (Blueprint $table) {
-            $table->unsignedBigInteger('registro_assuntos_id')->nullable();
+            $table->unsignedBigInteger('registro_assuntos_id');
         });
 
         //atribuindo motivo_contato para a nova coluna motivo_contatos_id

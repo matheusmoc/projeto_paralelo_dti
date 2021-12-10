@@ -267,7 +267,7 @@ return [
         [
             'text' => 'Usuários cadastrados',
             'url'  => 'admin/usuarios/',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-users',
         ],
 
         // [

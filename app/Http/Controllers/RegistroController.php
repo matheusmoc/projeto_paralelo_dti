@@ -104,7 +104,7 @@ class RegistroController extends Controller
         //SO
         //$usuario = User::find($id); --> não funciona
 
-        $usuario =  Registro::with(['user'])->find($id);
+        $usuarios =  Registro::with(['user'])->find($id);
         //dd($usuario);
 
         return view(
@@ -114,7 +114,7 @@ class RegistroController extends Controller
                 'ip' => $ip,
                 'sistema_op' => $sistema,
                 //variável      //valor
-                'usuario' => $usuario
+                'usuarios' => $usuarios
             ]
         );
     }

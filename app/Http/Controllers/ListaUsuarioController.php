@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User};
+use App\Models\{User, Registro};
 
 class ListaUsuarioController extends Controller
 {
@@ -14,9 +14,9 @@ class ListaUsuarioController extends Controller
      */
     public function index(Request $request)
     {
-        $pessoas = User::where('name', 'like', '%' . $request->input('name') . '%')->paginate();
+        $usuarios = User::where('name', 'like', '%' . $request->input('name') . '%')->paginate(10);
 
-        return view('admin.usuarios.index', ['pessoas' => $pessoas, 'request' => $request->all()]);
+        return view('admin.usuarios.index', ['usuarios' => $usuarios, 'request' => $request->all()]);
     }
 
     /**
@@ -37,7 +37,7 @@ class ListaUsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -48,7 +48,24 @@ class ListaUsuarioController extends Controller
      */
     public function show($id)
     {
-        //
+        $usuarios = User::findOrFail($id);
+        if (!$usuarios) {
+            return redirect()->back();
+        }
+
+        $registros = Registro::all();
+        // $keys = $registros->last();
+        // $keys->all();
+
+        return view('admin.usuarios.show', 
+        [
+            'usuarios' => $usuarios,
+            'registros' => $registros,
+            //'keys' => $keys
+       ]);
+
+
+
     }
 
     /**
@@ -82,6 +99,13 @@ class ListaUsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuarios = User::find($id);
+        if (!$usuarios) {
+            return redirect()->route('usuarios.index');   //->route('posts.index');
+        }
+        $usuarios->delete();
+
+        return redirect()->route('usuarios.index')
+            ->with('message', 'Usuário desativado.'); //session flash funciona como popups, somente uma vez
     }
 }

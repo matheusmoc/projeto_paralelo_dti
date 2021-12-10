@@ -81,9 +81,9 @@
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending">Nome</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                        aria-label="Engine version: activate to sort column ascending">Assunto</th>
+                                        aria-label="Engine version: activate to sort column ascending">Email</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                        aria-label="CSS grade: activate to sort column ascending"></th>
+                                        aria-label="CSS grade: activate to sort column ascending">Assunto</th>
                                 </tr>
                             </thead>
                             <tbody>
