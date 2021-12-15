@@ -15,7 +15,7 @@ class Registro extends Model
         return $this->belongsTo(RegistroAssunto::class, 'registro_assuntos_id');
     }
 
-    public function user(){ 
+    public function user(){
         return $this->belongsTo(User::class, 'user_id');
    }
 }

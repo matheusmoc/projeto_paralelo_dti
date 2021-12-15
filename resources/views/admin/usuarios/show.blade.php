@@ -87,7 +87,7 @@
         <strong><i class="far fa-file-alt mr-1"></i> Cargo</strong>
 
         <p class="text-muted">{{$usuarios->cargo}}</p>
-        
+
         <hr>
 
         <strong><i class="far fa-file-alt mr-1"></i> Quantidade de registros</strong>

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateRegistros extends Migration
 {
@@ -14,18 +15,43 @@ class CreateRegistros extends Migration
     public function up()
     {
         Schema::create('registros', function (Blueprint $table) {
+            // $user_id =  DB::table('users')->insertGetId([
+            //     'name' => 'Matheus',
+            //     'email' => 'matheusandrade009@gmail.com',
+            //     'password' =>'teste',
+            //     'cpf'=> '000.000.000.00',
+            //     'cidade' => 'Montes Claros',
+            //     'estado' => 'MG',
+            //     'unidade' => 'Unimontes',
+            //     'telefone'=> '38 99270-9671',
+            //     'cargo' => 'Estagiário'
+
+
+
+            // ]);
+
+
+
             $table->id();
-            $table->text('nome')->default();
-            $table->text('sobrenome')->default();
-            $table->text('email')->default();
-            $table->string('status')->default();
-            $table->string('unidade')->default();
-            $table->text('descricao', 1500)->default();
+            $table->text('nome');
+            $table->text('sobrenome');
+            $table->text('email');
+           
+            $table->string('status')->nullable();
+            $table->string('unidade')->nullable();
+           
+            $table->text('descricao', 1500);
             $table->integer('registro_assunto');
             $table->ipAddress('ip');
+            
+            $table->unsignedBigInteger('user_id')->default();
+            $table->foreign('user_id')->references('id')->on('users');
+            
             $table->timestamps();
 
         });
+
+
     }
 
 
@@ -36,6 +62,8 @@ class CreateRegistros extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('registros');
+        Schema::enableForeignKeyConstraints();
     }
 }

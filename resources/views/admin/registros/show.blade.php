@@ -117,7 +117,7 @@
                         <ul class="list-unstyled">
                         <li>
                             <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-user"></i>
-                                {{$sistema_op}}<br>
+                                {{$sistema_op->platform}}<br>
                             </a>
                         </li>
                     </ul>

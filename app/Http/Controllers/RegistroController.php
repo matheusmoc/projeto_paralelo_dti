@@ -51,10 +51,10 @@ class RegistroController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        
+
         $dados = Arr::add($request->all(), 'ip', $request->ip());
         Registro::create($dados);
-         
+
 
 
         // $registros = new Registro();
@@ -89,27 +89,29 @@ class RegistroController extends Controller
         }
 
         //dd($usuario);
-        
+
 
         //dd($registros);
 
         $ip =  $request->ip();
         //IP
-       
-        $sistema =  $request->server->get('HTTP_SEC_CH_UA_PLATFORM');
+
+        $sistema = get_browser();
+        // [browscap]
+        // ; http://php.net/browscap
+        // browscap="\xampp\php\extras\php_browscap.ini"//este caminho é relativo para cada instalação
+
+        //$sistema =  $request->server->get('HTTP_SEC_CH_UA_PLATFORM');
         //dd($_SERVER);
         //dd($request);
         //$sistema = $request->server->get('HTTP_USER_AGENT');
 
-        //SO
-        //$usuario = User::find($id); --> não funciona
-
         $usuarios =  Registro::with(['user'])->find($id);
-        //dd($usuario);
+        //dd($usuarios);
 
         return view(
             'admin.registros.show',
-            [ 
+            [
                 'registros' => $registros,
                 'ip' => $ip,
                 'sistema_op' => $sistema,

@@ -57,7 +57,7 @@ class ListaUsuarioController extends Controller
         // $keys = $registros->last();
         // $keys->all();
 
-        return view('admin.usuarios.show', 
+        return view('admin.usuarios.show',
         [
             'usuarios' => $usuarios,
             'registros' => $registros,

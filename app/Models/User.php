@@ -24,9 +24,9 @@ class User extends Authenticatable
         'cpf',
         'cidade',
         'estado',
-        'unidade', 
-        'telefone', 
-        'cargo', 
+        'unidade',
+        'telefone',
+        'cargo',
         'quantidade_registros',
     ];
 
@@ -48,6 +48,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
 
 }
 
