@@ -49,6 +49,7 @@ class CreateRegistros extends Migration
             
             $table->timestamps();
 
+
         });
 
 
@@ -63,6 +64,7 @@ class CreateRegistros extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
+        Schema::dropSoftDeletes();
         Schema::dropIfExists('registros');
         Schema::enableForeignKeyConstraints();
     }

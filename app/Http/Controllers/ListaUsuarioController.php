@@ -54,6 +54,7 @@ class ListaUsuarioController extends Controller
         }
 
         $registros = Registro::all();
+        //d($registros);
         // $keys = $registros->last();
         // $keys->all();
 
@@ -63,8 +64,6 @@ class ListaUsuarioController extends Controller
             'registros' => $registros,
             //'keys' => $keys
        ]);
-
-
 
     }
 

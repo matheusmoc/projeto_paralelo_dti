@@ -33,7 +33,7 @@
         @if (session('message'))
         <div class="alert alert-success" role="alert">
             <p>
-                {{ session('message') }}
+                {{ session('message')}}
             </p>
         </div>
         @endif
@@ -90,7 +90,7 @@
                                 @foreach ($registros as $registro)
                                     <tr class="odd">
                                         <td class="dtr-control sorting_1" tabindex="0">{{ $registro->id }}</td>
-                                        <td>{{ $registro->updated_at }}</td>
+                                        <td>{{ $registro->created_at->format('d/m/Y') }}</td>
                                         <td>{{ $registro->nome }} {{ $registro->sobrenome }}</td>
                                         <td>{{ $registro->email }}</td>
                                         <td>{{ $registro->assunto ? $registro->assunto->registro_assunto : '' }}</td>

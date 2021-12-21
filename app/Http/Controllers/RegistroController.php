@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Registro, RegistroAssunto, User};
+use App\Models\{Registro, RegistroAssunto, User, SoftDeleteRegistro};
 use Illuminate\Support\Arr;
 
 class RegistroController extends Controller
@@ -55,8 +55,6 @@ class RegistroController extends Controller
         $dados = Arr::add($request->all(), 'ip', $request->ip());
         Registro::create($dados);
 
-
-
         // $registros = new Registro();
 
         // $nome = $request->get('nome');
@@ -72,7 +70,7 @@ class RegistroController extends Controller
 
         // $registros->save();
 
-        return redirect()->route('registros.index');
+        return redirect()->route('registros.index', ['dados' => $dados]);
     }
 
     /**
@@ -106,7 +104,7 @@ class RegistroController extends Controller
         //dd($request);
         //$sistema = $request->server->get('HTTP_USER_AGENT');
 
-        $usuarios =  Registro::with(['user'])->find($id);
+        $usuarios =  Registro::with(['user'])->findOrFail($id);
         //dd($usuarios);
 
         return view(
@@ -171,8 +169,9 @@ class RegistroController extends Controller
             return redirect()->route('registros.index');   //->route('posts.index');
         }
         $registros->delete();
+          dd($registros);
 
         return redirect()->route('registros.index')
-            ->with('message', 'Ticket removido.'); //session flash funciona como popups, somente uma vez
+            ->with('message', 'Ticket removido'); //session flash funciona como popups, somente uma vez
     }
 }

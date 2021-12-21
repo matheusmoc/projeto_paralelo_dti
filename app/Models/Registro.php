@@ -9,6 +9,7 @@ class Registro extends Model
 {
     //use HasFactory;
     protected $fillable = ['nome', 'sobrenome', 'email', 'status', 'unidade', 'descricao', 'registro_assuntos_id', 'ip', 'user_id'];
+    
 
 
     public function assunto(){
@@ -16,7 +17,7 @@ class Registro extends Model
     }
 
     public function user(){
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
    }
 }
 

@@ -25,5 +25,18 @@ class UserSeeder extends Seeder
             'telefone'=> '38 99270-9671',
             'cargo' => 'Estagiário'
         ]);
+
+        User::create([
+            'name' => 'admin2',
+            'email' => 'admin2@admin',
+            'password' => 'admin123',
+            'cpf'=> '000.000.000.00',
+            'cidade' => 'Januária',
+            'estado' => 'MG',
+            'unidade' => 'Unimontes',
+            'telefone'=> '38 9999-9999',
+            'cargo' => 'Efetivo'
+        ]);
+
     }
 }
